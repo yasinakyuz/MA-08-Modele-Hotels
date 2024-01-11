@@ -1,12 +1,31 @@
 /*
 
 
+
+
 Création de la base de données et des TABLES
 
 EACH TABLE IS organized according to the NO ACTION option.
 
 
 */
+USE master
+GO
+
+
+USE master;
+GO
+IF (DB_ID('bdd_hotel_akyuz') IS NOT NULL) -- First delete the database if it exists
+BEGIN
+    ALTER DATABASE bdd_hotel_akyuz SET SINGLE_USER WITH ROLLBACK IMMEDIATE; 
+    DROP DATABASE bdd_hotel_akyuz;
+END
+GO
+CREATE DATABASE bdd_hotel_akyuz;
+GO
+USE bdd_hotel_akyuz;
+GO
+
 
 
 CREATE TABLE customers (

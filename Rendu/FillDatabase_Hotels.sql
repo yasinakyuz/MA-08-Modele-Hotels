@@ -1,3 +1,32 @@
+
+"Les données à entrer dans la base de données ont été créées dans Excel, 
+puis insérées de manière aléatoire avec la méthode d'insertion et l'aide de ChatGPT version 3."
+
+
+
+Après l'entrée des données, si une correction est apportée à une saisie erronée, 
+l'ordre des ID continue là où il s'est arrêté. 
+Avec ce code, l'ID a été remis à zéro pour permettre une nouvelle saisie de données. 
+Il est possible de réinitialiser le compteur d'une colonne IDENTITY dans une table SQL Server (dans ce cas, l'ID). 
+Pour ce faire, il faut d'abord supprimer toutes les données de la table (dans ce cas, la table features), 
+puis utiliser la commande DBCC CHECKIDENT pour réinitialiser le compteur de la colonne IDENTITY.
+
+
+Tout d'abord, pour supprimer toutes les données de la table features :
+
+--DELETE FROM <TABLE NAME>;
+--DBCC CHECKIDENT ('<TABLE NAME>', RESEED, 0);
+
+--DELETE FROM features;
+--DBCC CHECKIDENT ('features', RESEED, 0);
+
+
+Cette commande définit la prochaine valeur IDENTITY pour la colonne ID de la table features à 1 (si vous souhaitez commencer à 0, réglez la valeur RESEED sur -1)."
+
+
+
+
+
 SELECT * FROM categories;
 SELECT * FROM chains;
 SELECT * FROM customers;
@@ -9,12 +38,11 @@ SELECT * FROM reservations;
 SELECT * FROM rooms;
 SELECT * FROM rooms_has_reservations;
 
---DELETE FROM <TABLE NAME>;
---DBCC CHECKIDENT ('<TABLE NAME>', RESEED, 0);
 
 
 
--- CATEGORIES INSERT
+
+--CATEGORIES INSERT
 
 BEGIN TRY
 	BEGIN TRANSACTION
