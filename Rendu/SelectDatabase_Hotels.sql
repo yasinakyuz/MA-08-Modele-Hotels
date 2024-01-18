@@ -1,13 +1,15 @@
---24)
+USE bdd_hotel_akyuz;
 
 
 --Liste des hôtels pour chaque catégorie
+
 SELECT cat.type AS CategoryType, h.name AS HotelName
 FROM categories cat
 JOIN hotels h ON cat.id = h.category_id;
 
 
 --Liste des hôtels pour chaque chaîne
+
 SELECT c.name AS ChainName, h.name AS HotelName
 FROM chains c
 JOIN hotels h ON c.id = h.chain_id;
