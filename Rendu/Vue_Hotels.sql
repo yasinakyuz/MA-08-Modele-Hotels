@@ -61,14 +61,27 @@ SELECT *
 FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
 WHERE TABLE_NAME = 'reservations';
 
+
 ALTER TABLE reservations
 ADD CONSTRAINT CHK_reservations_adults_number CHECK (adults_number >= 1 AND adults_number <= 10);
 
+ALTER TABLE reservations
+DROP CONSTRAINT CHK_reservations_adults_number;
 
-ALTER TABLE customers
-DROP CONSTRAINT CHK_customers_postal_code;
-ALTER TABLE customers
-ADD CONSTRAINT CHK_customers_postal_code_length CHECK (LEN(postal_code) = 10);
+
+
+SELECT *
+FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
+WHERE TABLE_NAME = 'rooms';
+
+ALTER TABLE rooms
+ADD CONSTRAINT CHK_rooms_adults_number CHECK (adults_number >= 1 AND adults_number <= 5);
+
+ALTER TABLE rooms
+DROP CONSTRAINT CHK_rooms_adults_number;
+
+
+
 
 
 
